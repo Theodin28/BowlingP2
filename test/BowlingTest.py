@@ -1,32 +1,32 @@
-import unittest
-import BowlingTest
+from unittest import TestCase
 
-class testBowlingGame(unittest.TestCase):
-
-
-    def setup(self):
-        self.game = BowlingTest.BowlingGame()
+from bowling import Game
 
 
-    def testGutterGame(self):
+class BowlingTest(TestCase):
+
+    def setUp(self):
+        self.game = Game.Game()
+
+    def test_GutterGame(self):
         self.rollx(1, 20)
         assert self.game.score() == 0
 
-    def testaSpare(self):
+    def test_aSpare(self):
         self.game.roll(5)
         self.game.roll(5)
         self.game.roll(3)
         self.rollx(0, 17)
         assert self.game.score() == 16
 
-    def testaStrike(self):
+    def test_aStrike(self):
         self.game.roll(10)
         self.game.roll(4)
         self.game.roll(3)
         self.rollx(0, 17)
-        assert self.score() == 24
+        assert self.game.score() == 24
 
-    def perfectgame(self):
+    def test_perfectgame(self):
         self.rollx(10, 12)
         assert self.game.score() == 300
 
